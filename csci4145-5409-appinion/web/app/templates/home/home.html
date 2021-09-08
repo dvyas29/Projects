@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div>
+  <h2>Sentiment Analysis Requests</h2>
+  <ul>
+    {% for request in sentiment_requests %}
+    <li>Request <a href='/results?keyword={{ request.keyword }}'>{{ request.keyword }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="/sentimentrequest">New Sentiment Analysis Request</a>
+</div>
+{% endblock %}

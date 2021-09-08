@@ -1,0 +1,94 @@
+<!-- Mohammed Hamza Jasnak mh342039@dal.ca -->
+<h2>Group Form</h2>
+<form name="form" #groupFrom="ngForm" (submit)="save(groupFrom)" style="height: 91%;">
+
+<div style="border-bottom: 1px solid black;     height: 33%;" *ngIf="groupData">
+        <table class="full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Group Name</mat-label>
+                        <input matInput name="GroupName" class="" #GroupName="ngModel" [(ngModel)]="groupData.groupName" required>
+                        <mat-error *ngIf="GroupName.invalid">Group Name is required</mat-error>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Campus Location</mat-label>
+                        <mat-select matNativeControl  name="CampusLocation" class="" #CampusLocation="ngModel"  required [(ngModel)]="groupData.location" (selectionChange)="criteriaValueChanged('location',groupData.location)">
+                            <mat-option value="ALL">All</mat-option>
+                            <mat-option value="Halifax">Halifax</mat-option>
+                            <mat-option value="Truro">Truro</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="CampusLocation.invalid">Campus Location is required</mat-error>
+
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Faculty</mat-label>
+                        <mat-select matNativeControl  name="Faculty" class="" #Faculty="ngModel"  required [(ngModel)]="groupData.faculty" (selectionChange)="criteriaValueChanged('faculty',groupData.faculty)">
+                            <mat-option value="ALL">All</mat-option>
+                            <mat-option value="Faculty of Computer Science">Faculty of Computer Science</mat-option>
+                            <mat-option value="Faculty of Management">Faculty of Management</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="Faculty.invalid">Faculty is required</mat-error>
+                    </mat-form-field>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+</div>
+
+<div style="height: 13%">
+    <div>
+        <table class="full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Criteria</mat-label>
+                        <mat-select name="Criteria" [(ngModel)]="criteria">
+                            <mat-option value="faculty">Faculty</mat-option>
+                            <mat-option value="location">Campus Location</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" style="margin: 15px 30px;" type="button"
+                        (click)="search()">Search</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div style="height: 33%; overflow: auto; min-height: 100px;" *ngIf="menteeList">
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th style="width: 5%;"></th>
+                <th>Name</th>
+                <th>Program</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mentee of menteeList">
+                <td>
+                    <mat-checkbox color="primary" class="example-margin" (change)="updateMentee($event.checked, mentee._id)"  [(ngModel)]="mentee.checked" [checked]="mentee.checked">
+                    </mat-checkbox>
+                </td>
+                <td>{{mentee.name}}</td>
+                <td>{{mentee.program}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div style="height: 33%; overflow: auto; min-height: 100px;" *ngIf="!menteeList">
+    No Records 
+</div>
+<div style="height: 9%">
+    <button mat-raised-button color="primary" type="submit" style="margin: 15px 0px;">Save</button>
+    <button mat-raised-button color="warn"  mat-dialog-close style="margin: 15px 30px;" (click)="delete(); " *ngIf="data.isEdit">Delete</button>
+</div>
+</form>

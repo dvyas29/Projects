@@ -1,0 +1,15 @@
+.form-field {
+    width: 100%;
+  }
+
+.card{
+    height: 62vh;
+}
+.content-textarea{
+    height: 29vh;
+    max-height: 29vh;
+}
+
+.content-form-field{
+    height: 29vh;
+}

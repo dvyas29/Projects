@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.wayne.project.accountInformationTest.RequestChequeBookTest" time="0.033" tests="2" errors="0" skipped="0" failures="0">
+  <properties/>
+  <testcase name="requestChequeBookFailTest" classname="com.wayne.project.accountInformationTest.RequestChequeBookTest" time="0.027"/>
+  <testcase name="requestChequeBookPassTest" classname="com.wayne.project.accountInformationTest.RequestChequeBookTest" time="0.003"/>
+</testsuite>

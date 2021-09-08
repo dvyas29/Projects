@@ -1,0 +1,50 @@
+stages:
+    - build
+    - test
+    - deploy
+    - deploy_prod
+
+build:
+    stage: build
+    image: maven:latest
+    script:
+        - echo "Building the pipeline"
+        - mvn compile
+    artifacts:
+        paths:
+        - target
+    tags:
+        - ugrad
+   
+test:
+    stage: test
+    image: maven:latest
+    artifacts:
+      when: always
+      reports:
+        junit:
+          - target/surefire-reports/TEST-*.xml
+
+    script:
+        - echo "Testing the pipeline "
+        - mvn verify
+    tags:
+        - ugrad
+        
+deploy:
+    stage: deploy
+    image: maven:latest
+    before_script:
+      - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+      #- eval $(ssh-agent -s)
+      #- echo -n "$DEPLOY_SSH_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    script:
+        - echo "Deploying the develop pipeline"
+        - chmod og-rwx ${DEPLOY_SSH_KEY}
+        - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
+        #- scp -r -o StrictHostKeyChecking=no -i ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${CI_COMMIT_SHORT_SHA}.zip"
+        - scp -r -o StrictHostKeyChecking=no -i "${DEPLOY_SSH_KEY}" ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${CI_PROJECT_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHORT_SHA}.zip"
+    tags:
+        - ugrad
+    only: 
+        - develop

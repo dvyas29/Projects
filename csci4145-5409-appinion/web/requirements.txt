@@ -1,0 +1,7 @@
+Flask
+Flask-WTF
+Jinja2
+Flask-SQLAlchemy
+boto3
+psycopg2-binary
+requests

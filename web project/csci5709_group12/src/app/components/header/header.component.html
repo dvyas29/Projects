@@ -1,0 +1,21 @@
+
+<header class="header row">
+    <img src="../../../assets/images/dal_logo.png" alt="dal-logo" style="height: 110%;"/>
+    <div class="col-md-10" style="border-left: 2px solid;
+    padding-left: 8px; padding-top: 5px;">
+        <h1 style="margin: 0 0 5px">
+            Student Handbook
+        </h1>
+    </div>
+<div class="col-md-2 profile" style="float: right;">
+    <button mat-mini-fab class="profile-icon" [matMenuTriggerFor]="ProfileMenu">
+        <mat-icon style="color: #002b5c;">perm_identity</mat-icon>
+      </button>
+    <!-- <mat-icon class="profile-icon" [matMenuTriggerFor]="ProfileMenu" aria-hidden="false" aria-label="Example home icon">perm_identity</mat-icon> -->
+    <mat-menu #ProfileMenu="matMenu">
+        <button mat-menu-item [routerLink]="'/main/profile'">Profile</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+
+</div>
+</header>

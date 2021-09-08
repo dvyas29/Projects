@@ -1,0 +1,143 @@
+<mat-nav-list style="overflow-y: auto; overflow-x: hidden;"><!--"!util.pinned ? util.close() : null" (mouseenter)="!util.pinned ? util.open() : null">-->
+  <div>
+    <mat-icon *ngIf="!util.opened" class="sidenav-right" (click)="util.open()" matTooltip="Expand" matTooltipPosition="right">arrow_right</mat-icon>
+    <mat-icon *ngIf="util.opened" class="sidenav-left" (click)="util.close()" matTooltip="Collapse" matTooltipPosition="right">arrow_left</mat-icon>
+  </div>
+  <div>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle #mep1="matExpansionPanel" openedPanelId="mep1"
+        (mouseleave)="!util.opened ? mep1.expanded=false : null">
+        <mat-expansion-panel-header (click)="!util.opened ? util.open():null">
+          <mat-panel-title>
+            <mat-icon class="sideNavItemComponent">announcement</mat-icon>
+            <span matline>Announcements</span>
+            <mat-icon style="margin-left: 20px;">keyboard_arrow_down</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul style="list-style-type:none;">
+          <li class="innerNav"><a [routerLink]="'/main/announcement'" class="sideNavItemComponent"
+              (click)="mep1.expanded = !mep1.expanded; util.isViewMyAnnouncementControlsVisible = false; announcementService.getAnnouncements()">View All Announcement</a></li>
+          <li class="innerNav"><a [routerLink]="'/main/announcement'" class="sideNavItemComponent" *ngIf="dataservice.isAdmin || (dataservice.loggedInUser.data.role == 'Mentor')"
+    (click)="mep1.expanded = !mep1.expanded; util.isViewMyAnnouncementControlsVisible = true; announcementService.getAnnouncements()">View My Announcements</a></li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle #mep2="matExpansionPanel"
+        (mouseleave)="!util.opened ? mep2.expanded=false : null">
+        <mat-expansion-panel-header (click)="!util.opened ? util.open():null">
+          <mat-panel-title>
+            <mat-icon class="sideNavItemComponent">feed</mat-icon>
+            <span matline>Student Wall</span>
+            <mat-icon style="margin-left: 45px;">keyboard_arrow_down</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul style="list-style-type:none;">
+          <li class="innerNav"><a [routerLink]="'/main/studentwall'" class="sideNavItemComponent"
+              (click)="mep2.expanded = !mep2.expanded">View All Feed</a></li>
+          <li class="innerNav"><a [routerLink]="'/main/studentwall'" class="sideNavItemComponent"
+              (click)="mep2.expanded = !mep2.expanded">View My Feed</a></li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion [routerLink]="'/main/scheduler'">
+      <mat-expansion-panel hideToggle #mep2="matExpansionPanel"
+        (mouseleave)="!util.opened ? mep2.expanded=false : null" disabled>
+        <mat-expansion-panel-header (click)="!util.opened ? util.open():null">
+          <mat-panel-title>
+            <mat-icon class="sideNavItemComponent">edit_calendar</mat-icon>
+            <span matline>Scheduler</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion [routerLink]="'/main/notes'">
+      <mat-expansion-panel hideToggle #mep2="matExpansionPanel"
+        (mouseleave)="!util.opened ? mep2.expanded=false : null" disabled>
+        <mat-expansion-panel-header (click)="!util.opened ? util.open():null">
+          <mat-panel-title>
+            <mat-icon class="sideNavItemComponent">notes</mat-icon>
+            <span matline>Notes</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion *ngIf="!dataservice.isAdmin">
+    <mat-expansion-panel hideToggle #mep5="matExpansionPanel" (mouseleave)="!util.opened ? mep5.expanded=false : null">
+      <mat-expansion-panel-header (click)="!util.opened ? util.open():null">
+        <mat-panel-title>
+          <mat-icon class="sideNavItemComponent">groups</mat-icon>
+          <span matline>Peer Mentorship</span>
+          <mat-icon style="margin-left: 20px;">keyboard_arrow_down</mat-icon>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ul style="list-style-type:none;">
+        <li class="innerNav"><a [routerLink]="'/main/peermentorshipregistration'" class="sideNavItemComponent" (click)="mep5.expanded = !mep5.expanded">Registration</a></li>
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+    <mat-accordion *ngIf="dataservice.isAdmin">
+      <mat-expansion-panel hideToggle #mep5="matExpansionPanel" (mouseleave)="!util.opened ? mep5.expanded=false : null">
+        <mat-expansion-panel-header (click)="!util.opened ? util.open():null">
+          <mat-panel-title>
+            <mat-icon class="sideNavItemComponent">groups</mat-icon>
+            <span matline>Peer Mentorship</span>
+            <mat-icon style="margin-left: 20px;">keyboard_arrow_down</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul style="list-style-type:none;">
+          <li class="innerNav"><a [routerLink]="'/main/manageregistration'" class="sideNavItemComponent" (click)="mep5.expanded = !mep5.expanded">Manage Registration</a></li>
+          <li class="innerNav"><a [routerLink]="'/main/requestlist'" class="sideNavItemComponent" (click)="mep5.expanded = !mep5.expanded">View Requests</a></li><!--modify later with actual user-->
+          <li class="innerNav"><a [routerLink]="'/main/group-management'" class="sideNavItemComponent" (click)="mep5.expanded = !mep5.expanded">Manage Groups</a></li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion *ngIf="dataservice.isAdmin">
+      <mat-expansion-panel hideToggle #mep6="matExpansionPanel" (mouseleave)="!util.opened ? mep6.expanded=false : null">
+        <mat-expansion-panel-header (click)="!util.opened ? util.open():null">
+          <mat-panel-title>
+            <mat-icon class="sideNavItemComponent">accessibility</mat-icon>
+            <span matline>Accessibility</span>
+            <mat-icon style="margin-left: 45px;">keyboard_arrow_down</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul style="list-style-type:none;">
+          <li class="innerNav"><a [routerLink]="'/main/addmember'" class="sideNavItemComponent" (click)="mep6.expanded = !mep6.expanded">Add a member</a></li>
+          <li class="innerNav"><a [routerLink]="'/main/modifymember'" class="sideNavItemComponent" (click)="mep6.expanded = !mep6.expanded">Modify Member Access</a></li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel hideToggle #mep7="matExpansionPanel" (mouseleave)="!util.opened ? mep7.expanded=false : null">
+      <mat-expansion-panel-header (click)="!util.opened ? util.open():null">
+        <mat-panel-title>
+          <mat-icon class="sideNavItemComponent">contact_support</mat-icon>
+          <span matline>Support</span>
+          <mat-icon style="margin-left: 77px;">keyboard_arrow_down</mat-icon>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ul style="list-style-type:none;">
+        <li class="innerNav"><a [routerLink]="'/main/faq'" class="sideNavItemComponent" (click)="mep7.expanded = !mep7.expanded">FAQ</a></li>
+        <li class="innerNav"><a [routerLink]="'/main/contactus'" class="sideNavItemComponent" (click)="mep7.expanded = !mep7.expanded">Contact Us</a></li>
+        <li class="innerNav"><a [routerLink]="'/main/mentorchat'" class="sideNavItemComponent" (click)="mep7.expanded = !mep7.expanded">Connect with mentor</a></li>
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel hideToggle #mep8="matExpansionPanel" (mouseleave)="!util.opened ? mep8.expanded=false : null">
+      <mat-expansion-panel-header (click)="!util.opened ? util.open():null">
+        <mat-panel-title>
+          <mat-icon class="sideNavItemComponent">edit_note</mat-icon>
+          <span matline>Feedback</span>
+          <mat-icon style="margin-left: 65px;">keyboard_arrow_down</mat-icon>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ul style="list-style-type:none;">
+        <li class="innerNav"><a [routerLink]="'/main/rate-application'" class="sideNavItemComponent" (click)="mep8.expanded = !mep8.expanded">Rate application</a></li>
+        <li class="innerNav"><a [routerLink]="'/main/rate-mentor'" class="sideNavItemComponent" *ngIf="dataservice.isAdmin || (dataservice.loggedInUser.data.role == 'Mentee')" (click)="mep8.expanded = !mep8.expanded">Rate a mentor</a></li>
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  </div>
+</mat-nav-list>

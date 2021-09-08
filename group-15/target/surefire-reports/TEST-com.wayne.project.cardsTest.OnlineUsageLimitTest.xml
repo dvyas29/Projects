@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.wayne.project.cardsTest.OnlineUsageLimitTest" time="0.047" tests="6" errors="0" skipped="0" failures="0">
+  <properties/>
+  <testcase name="Test4SetOnlineUsageLimitAboveMaximumForCreditCard" classname="com.wayne.project.cardsTest.OnlineUsageLimitTest" time="0.033"/>
+  <testcase name="Test6SetOnlineUsageLimitWithinPermissibleRangeForCreditCard" classname="com.wayne.project.cardsTest.OnlineUsageLimitTest" time="0.002"/>
+  <testcase name="Test5SetOnlineUsageLimitLessThanMinimumForCreditCard" classname="com.wayne.project.cardsTest.OnlineUsageLimitTest" time="0.002"/>
+  <testcase name="Test3SetOnlineUsageLimitWithinPermissibleRangeForDebitCard" classname="com.wayne.project.cardsTest.OnlineUsageLimitTest" time="0.001"/>
+  <testcase name="Test2SetOnlineUsageLimitLessThanMinimumForDebitCard" classname="com.wayne.project.cardsTest.OnlineUsageLimitTest" time="0.001"/>
+  <testcase name="Test1SetOnlineUsageLimitAboveMaximumForDebitCard" classname="com.wayne.project.cardsTest.OnlineUsageLimitTest" time="0.001"/>
+</testsuite>

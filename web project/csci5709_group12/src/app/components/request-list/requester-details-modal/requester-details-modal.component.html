@@ -1,0 +1,87 @@
+<!-- Author: Gurleen Saluja (gr997570@dal.ca) -->
+<h1 mat-dialog-title>
+  {{util.modalTitle}}
+  <mat-icon (click)="close()" style="float:right;cursor:pointer;">close</mat-icon>
+</h1>
+<div mat-dialog-content>
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Member's Name</mat-label>
+    <input matInput [(ngModel)]="data.name" disabled>
+  </mat-form-field>
+  </p>
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Member's Email Address</mat-label>
+    <input matInput [(ngModel)]="data.email" disabled>
+  </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select #type [(ngModel)]="data.requestType" *ngIf="data.mode == 'V'" disabled>
+        <mat-option [value]="data.requestType">{{ data.requestType }}</mat-option>
+      </mat-select>
+      <mat-select [(ngModel)]="selectedType" #type *ngIf="data.mode == 'C'" (ngModelChange)="enableConfirm(selectedType, selectedRole)">
+        <mat-option [value]="type" *ngFor="let type of types">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Role</mat-label>
+      <mat-select #role [(ngModel)]="data.role" *ngIf="data.mode == 'V'" disabled> <!--|| data.requestType !== 'Role Change'-->
+        <mat-option [value]="data.role">{{ data.role }}</mat-option>
+      </mat-select>
+      <mat-select [(ngModel)]="selectedRole" #role *ngIf="data.mode == 'C'" (ngModelChange)="enableConfirm(selectedType, selectedRole)" [disabled]="!isRoleChangeRequest">
+        <mat-option [value]="role" *ngFor="let role of roles">{{ role }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Faculty</mat-label>
+    <input matInput [(ngModel)]="data.faculty" disabled>
+  </mat-form-field>
+  </p>
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Program</mat-label>
+    <input matInput [(ngModel)]="data.program" disabled>
+  </mat-form-field>
+  </p>
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Program Start Date</mat-label>
+    <input matInput [(ngModel)]="data.startDate" disabled>
+  </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Program End Date</mat-label>
+      <input matInput [(ngModel)]="data.endDate" disabled>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Location</mat-label>
+      <input matInput [(ngModel)]="data.location" disabled>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Campus Location</mat-label>
+      <input matInput [(ngModel)]="data.campusLocation" disabled>
+    </mat-form-field>
+  </p>
+  <p class="alert alert-warning" *ngIf="data.mode == 'C' && isDiffLess">
+    The difference between current date and start date is less than 8 months for the role of a mentor.
+  </p>
+</div>
+<div mat-dialog-actions *ngIf="data.mode == 'V'">
+  <button mat-raised-button color="primary" mat-dialog-close *ngIf="data.requestStatus === 'Pending'" (click)="modifyUserRequest('Approved');">Approve</button>
+  <button mat-raised-button color="warn" mat-dialog-close *ngIf="data.requestStatus === 'Pending'" (click)="modifyUserRequest('Declined');">Decline</button>
+</div>
+<div mat-dialog-actions *ngIf="data.mode == 'C'">
+  <button mat-raised-button color="primary" mat-dialog-close *ngIf="data.requestType !== selectedType || data.role !== selectedRole" (click)="modifyUser('Confirmed');" [disabled]="!enableConfirmBtn">Confirm</button>
+</div>

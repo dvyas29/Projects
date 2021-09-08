@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body::-webkit-scrollbar{
+  display: none;
+  overflow: hidden;
+}
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+    height: 100%;
+}
+mat-sidenav {
+    width: 250px;
+}
+main {
+    padding: 10px;
+}
+
+.navigation-items{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-caption{
+    display: inline-block;
+    padding-left: 6px;
+}
+
+.mat-nav-list{
+  color: #00008B;
+}
+
+.mat-drawer-inner-container{
+  overflow: hidden !important;
+}
+
+.mat-sidenav-container{
+  margin-left: 0px !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:#00008B;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:rgb(66, 134, 244);
+  background-color: #00008B;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color: #00008B;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 23px 16px !important;
+}

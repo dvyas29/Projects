@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.wayne.project.cardsTest.CardsTest" time="0.132" tests="10" errors="0" skipped="0" failures="0">
+  <properties/>
+  <testcase name="test9BlockCreditCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.104"/>
+  <testcase name="Test8UpgradeCardForCreditCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.001"/>
+  <testcase name="test4BlockDebitCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.002"/>
+  <testcase name="Test6DisplayStatusOfCreditCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.004"/>
+  <testcase name="Test7GetUpgradeCardStatusForCreditCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.001"/>
+  <testcase name="Test2GetUpgradeCardStatusForDebitCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.006"/>
+  <testcase name="Test1DisplayStatusOfDebitCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.002"/>
+  <testcase name="Test10GeneratePinCodeForCreditCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.002"/>
+  <testcase name="Test3UpgradeCardForDebitCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.001"/>
+  <testcase name="Test5GeneratePinCodeForDebitCard" classname="com.wayne.project.cardsTest.CardsTest" time="0.001"/>
+</testsuite>

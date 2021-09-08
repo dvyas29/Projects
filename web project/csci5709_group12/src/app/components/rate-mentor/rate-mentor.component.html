@@ -1,0 +1,40 @@
+<!-- Author: Mansi Singh 
+      Email id: mn518448@dal.ca -->
+      
+<section>
+<h2 class="mentorFeedbackHeader">Welcome to this page! You can provide rating and feedback for your mentor here..</h2>
+<div class="mentorFeedbackContainer">
+<form [formGroup]="feedbackForMentorForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field class="form-field">
+    <mat-label>Mentor</mat-label>
+    <mat-select name="Mentor" formControlName="Mentor" [(ngModel)]="mentorForm.mentorName" placeholder="Select your Mentor name">
+      <mat-option *ngFor="let mentor of Mentors" [value]="mentor.name">
+        {{mentor.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="feedbackForMentorForm?.controls['MentorName']?.errors?.required">Please choose a mentor</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>Rating</mat-label>
+    <mat-select name="Rating" formControlName="Rating" [(ngModel)]="mentorForm.rating" placeholder="Rating">
+      <mat-option *ngFor="let rating of ratings" [value]="rating.viewValue">
+        {{rating.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="feedbackForMentorForm?.controls['Rating']?.errors?.required">Please choose a rating</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+      <mat-label>Your comments </mat-label>
+      <textarea matInput #feedback formControlName="Feedback" placeholder="Feedback" [(ngModel)]="mentorForm.feedbackDescription" type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" cdkAutosizeMaxRows="8"></textarea>
+      <mat-hint align="end">{{feedback.value.length}} characters</mat-hint>
+      <mat-error *ngIf="feedbackForMentorForm?.controls['Feedback']?.errors?.required || feedbackForMentorForm?.controls['Feedback']?.errors?.cannotContainSpace">Feedback is required</mat-error>
+  </mat-form-field>
+<br>
+
+<button mat-raised-button type="submit" [disabled]="!feedbackForMentorForm?.valid" color="primary">Submit</button>
+</form>
+</div>
+</section>

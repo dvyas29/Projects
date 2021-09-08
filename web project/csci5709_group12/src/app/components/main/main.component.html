@@ -1,0 +1,21 @@
+<app-header #header></app-header>
+
+<!-- referred sidenav from https://material.angular.io/components/sidenav/examples -->
+<div class="row" style="margin: 0; height: 90%; display: flex;">
+        <mat-drawer-container class="side-nav-container" hasBackdrop="false" style="width: 100%;">
+            <mat-drawer class="side-nav-drawer" [ngStyle]="{'width.em':utilityservice.sidenavWidth}" #sideNav mode="side" [opened]="true">
+                <app-nav></app-nav>
+            </mat-drawer>
+            <!--   -->
+            <mat-drawer-content class="main-content" [ngStyle]="{'margin-left.px':utilityservice.sidenavMargin}">
+                <section #contentHeader class="section-content">
+
+                    <h2 class="content-header" style="padding: 5px 0;">{{utilityservice.sectionTitle}}</h2>
+                </section>
+                <section style="height: 92%;overflow: auto;">
+                    <router-outlet></router-outlet>
+                </section>
+
+            </mat-drawer-content>
+        </mat-drawer-container>
+</div>

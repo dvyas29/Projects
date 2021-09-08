@@ -1,0 +1,28 @@
+.search-mat-form-field{
+    float: right;
+    margin-right: 20px;
+}
+
+.input-search{
+    margin-bottom: 7px;
+}
+
+.group-table{
+    width: 95%;
+    margin: auto;
+}
+
+.search-section{
+    height: 50px;
+}
+.serach-icon{
+    margin-right: 15px;
+}
+
+.groupName-link{
+    cursor: pointer;
+    color: darkblue;
+}
+.groupName-link:hover{
+    text-decoration: underline;
+}

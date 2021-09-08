@@ -1,0 +1,53 @@
+.note-container{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: transparent;
+}
+
+.note-card{
+    margin: 15px;
+    height: 30vh;
+    width: 20vw;
+    cursor: pointer;
+}
+
+.note-card-title{
+    font-weight: bolder;
+
+}
+
+.title-label{
+    width: 14vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-delete-icon{
+    float: right;
+}
+
+.card-delete-icon:hover{
+    color: #c70f00;
+}
+
+.note-create-card{
+    padding: 16px 40%;
+}
+
+.card-create-icon{
+    font-size: xxx-large;
+}
+
+.note-create-card-content{    
+    text-align: center;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.note-card-content{
+    display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

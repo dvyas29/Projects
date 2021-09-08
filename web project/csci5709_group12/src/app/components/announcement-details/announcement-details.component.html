@@ -1,0 +1,46 @@
+<!-- Author: Mansi Singh 
+      Email id: mn518448@dal.ca -->
+
+<!-- Back to announcement section -->
+<section class="backToAnnouncements">
+  <section class="col-md-4">
+      <button mat-button [routerLink]="['/main/announcement']"><mat-icon>chevron_left</mat-icon> Back to Announcement</button>
+  </section>
+</section>
+
+<!-- Create a new announcement -->
+<section>
+  <div class="announcementContainer">
+  <form [formGroup]="addAnnouncementForm" (ngSubmit)="onSaveAnnouncement()">
+
+    <mat-form-field class="form-field">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="Title" [(ngModel)]="announcement.title" placeholder="Title" type="text">
+      <mat-error *ngIf="addAnnouncementForm?.controls['Title']?.errors?.required || addAnnouncementForm?.controls['Title']?.errors?.cannotContainSpace">Title is required </mat-error>
+      <mat-error *ngIf="addAnnouncementForm?.controls['Title']?.errors?.maxlength">Title should be maximum 30 characters </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Category</mat-label>
+      <mat-select name="Category" formControlName="Category" [(ngModel)]="announcement.category" [value]="announcement.category" placeholder="Category">
+        <mat-option *ngFor="let category of categories" [value]="category.viewValue">
+          {{category.viewValue}}
+        </mat-option>
+      </mat-select>
+    <mat-error *ngIf="addAnnouncementForm?.controls['Category']?.errors?.required">Please choose a category</mat-error> 
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+        <mat-label>Description</mat-label>
+        <textarea class="description-textarea" matInput #message formControlName="Description" [(ngModel)]="announcement.description" placeholder="Description" type="text"></textarea>
+        <mat-hint align="end">{{message.value.length}} characters</mat-hint>
+        <mat-error *ngIf="addAnnouncementForm?.controls['Description']?.errors?.required || addAnnouncementForm?.controls['Description']?.errors?.cannotContainSpace">Description is required</mat-error>
+    </mat-form-field>
+
+  <section>
+    <button mat-button type="submit" [disabled]="!addAnnouncementForm?.valid"><mat-icon>check</mat-icon>Save</button>
+  </section>
+ </form> 
+</div>
+
+</section>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.wayne.project.loansTest.LoansTest" time="0.06" tests="7" errors="0" skipped="0" failures="0">
+  <properties/>
+  <testcase name="getTransationHistoryTest" classname="com.wayne.project.loansTest.LoansTest" time="0.053"/>
+  <testcase name="loanPaymentTest" classname="com.wayne.project.loansTest.LoansTest" time="0.001"/>
+  <testcase name="getExistingLoansTest" classname="com.wayne.project.loansTest.LoansTest" time="0.001"/>
+  <testcase name="loanAmountDetailsTest" classname="com.wayne.project.loansTest.LoansTest" time="0.001"/>
+  <testcase name="outstandingLoanAmountTest" classname="com.wayne.project.loansTest.LoansTest" time="0.001"/>
+  <testcase name="loanRepaymentScheduleTest" classname="com.wayne.project.loansTest.LoansTest" time="0.001"/>
+  <testcase name="applyForLoanTest" classname="com.wayne.project.loansTest.LoansTest" time="0.001"/>
+</testsuite>

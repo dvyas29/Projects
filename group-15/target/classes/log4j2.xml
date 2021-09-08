@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">
+            [%d{yyyy-MMM-dd HH:mm:ss}] [%t] [%level] [%C] [%msg] %n
+        </Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        
+        <RollingFile name="FileAppender" fileName="eventLogs/ProjectLogs.log"
+             filePattern="logs/ProjectLog-%d{yyyy-MM-dd}-%i.log">
+    		<PatternLayout>
+        	<Pattern>${LOG_PATTERN}</Pattern>
+    		</PatternLayout>
+   			<Policies>
+        	<SizeBasedTriggeringPolicy size="7KB" />
+  			</Policies>
+    		<DefaultRolloverStrategy max="5"/>
+		</RollingFile>
+        
+    </Appenders>
+    <Loggers>
+    	<Root level="debug">
+    		<AppenderRef ref="FileAppender" />
+    	</Root>
+    	
+    	
+    </Loggers>
+</Configuration>

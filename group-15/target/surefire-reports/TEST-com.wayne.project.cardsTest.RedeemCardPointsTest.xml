@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.wayne.project.cardsTest.RedeemCardPointsTest" time="0.051" tests="4" errors="0" skipped="0" failures="0">
+  <properties/>
+  <testcase name="Test2RedeemDebitCardPoints" classname="com.wayne.project.cardsTest.RedeemCardPointsTest" time="0.038"/>
+  <testcase name="Test1DisplayRedeemCardPointsForDebitCard" classname="com.wayne.project.cardsTest.RedeemCardPointsTest" time="0.002"/>
+  <testcase name="Test3DisplayRedeemCardPointsForCreditCard" classname="com.wayne.project.cardsTest.RedeemCardPointsTest" time="0.003"/>
+  <testcase name="Test4RedeemCreditCardPoints" classname="com.wayne.project.cardsTest.RedeemCardPointsTest" time="0.004"/>
+</testsuite>

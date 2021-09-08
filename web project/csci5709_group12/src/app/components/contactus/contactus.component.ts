@@ -1,0 +1,18 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UtilityService } from 'src/app/services/utilityservice.service';
+
+@Component({
+  selector: 'app-contactus',
+  templateUrl: './contactus.component.html',
+  styleUrls: ['./contactus.component.css']
+})
+export class ContactusComponent implements OnInit {
+
+  constructor(private utilityService:  UtilityService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.utilityService.sectionTitle = "Contact Admin"
+  }
+
+}

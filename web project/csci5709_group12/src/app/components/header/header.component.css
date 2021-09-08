@@ -1,0 +1,26 @@
+.header{
+    height: 10%;
+    background-color: #002b5c;
+    color: white;
+    padding: 1vh;
+    display: flex;
+    margin: 0px;
+    vertical-align: middle;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    align-items: center;
+}
+
+.profile-icon{
+    background-color: white;
+    float: right;
+    }
+
+.profile-icon:hover{
+    background-color: #F5EDFF;
+}
+
+.profile {
+  right: 0;
+  position: absolute;
+}

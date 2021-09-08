@@ -1,0 +1,113 @@
+<!-- Author: Gurleen Saluja (gr997570@dal.ca) -->
+<div *ngIf="!isRegistrationOpen">Registrations are closed. Please check back later.</div>
+<div *ngIf="isRegistrationOpen">
+  <p class="alert alert-success" *ngIf="success && !reopenRegistration">
+    <strong>This request has been approved.</strong>
+  </p>
+  <p class="alert alert-danger" *ngIf="failure && !reopenRegistration">
+    <strong>This request has been declined.</strong>
+  </p>
+  <p class="alert alert-info" *ngIf="!success && !failure && !reopenRegistration && !freshRegistration && !memberAlreadyExists">
+    <strong>Your request has been submitted. Please check back later.</strong>
+  </p>
+  <div class="registrationForm">
+    <form [formGroup]="registrationForm">
+      <p>
+        <mat-radio-group aria-label="Select an option" required name="role" formControlName="role" [(ngModel)]="registerUser.role">
+        <mat-radio-button value="Mentor" style="color: #00008B;">Mentor</mat-radio-button>
+        <mat-radio-button value="Mentee" style="color: #00008B;">Mentee</mat-radio-button>
+        </mat-radio-group>
+      </p>
+      <p>
+      <mat-form-field appearance="outline" class="formFields">
+        <mat-label>Email Address</mat-label>
+        <input matInput id="email" name="email" formControlName="email" [(ngModel)]="registerUser.email" required>
+        <mat-icon matSuffix (click)="checkIfUserExists()" style="cursor: pointer;" *ngIf="dataservice.isAdmin">search</mat-icon>
+        <mat-error *ngIf="registrationForm.controls['email'].errors?.pattern">Invalid email format</mat-error>
+        <mat-error *ngIf="registrationForm.controls['email'].errors?.notRegistered">User not registered with Student Handbook application</mat-error>
+      </mat-form-field>
+      </p>
+      <p>
+      <mat-form-field appearance="outline" class="formFields">
+        <mat-label>Name</mat-label>
+        <input matInput id="name" name="name" formControlName="name" required placeholder="Alphanumeric" [(ngModel)]="registerUser.name">
+      </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="formFields">
+          <mat-label>Faculty</mat-label>
+          <mat-select #faculty id="faculty" name="faculty" formControlName="faculty" required [(ngModel)]="registerUser.faculty">
+            <mat-option [value]="faculty" *ngFor="let faculty of faculties">{{ faculty }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="formFields">
+          <mat-label>Program</mat-label>
+          <mat-select #program id="program" name="program" formControlName="program" required [(ngModel)]="registerUser.program">
+            <mat-option [value]="program" *ngFor="let program of programs">{{ program }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registrationForm.controls['program'].errors?.mismatch">Program and Faculty do not match</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+      <mat-form-field appearance="outline" class="formFields">
+        <mat-label>Program Start Date</mat-label>
+        <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" id="startDate" name="startDate" required [min]="minDate" [max]="maxDate" [(ngModel)]="registerUser.startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker
+                        startView="multi-year"
+                        (yearSelected)="chosenStartYearHandler($event)"
+                        (monthSelected)="chosenStartMonthHandler($event, startDatePicker)">
+        </mat-datepicker>
+        <mat-error *ngIf="registrationForm.controls['startDate'].errors?.match">Start Date and End Date cannot be same</mat-error>
+        <mat-error *ngIf="dataservice.isAdmin && registrationForm.controls['startDate'].errors?.invalidDiff">You cannot apply to be a mentor. The difference between current date and start date is less than 8 months</mat-error>
+      </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="formFields">
+          <mat-label>Program End Date</mat-label>
+          <input matInput [matDatepicker]="endDatePicker" formControlName="endDate" id="endDate" name="endDate" required [min]="minDate" [max]="maxDate" [(ngModel)]="registerUser.endDate">
+          <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker
+                          startView="multi-year"
+                          (yearSelected)="chosenEndYearHandler($event)"
+                          (monthSelected)="chosenEndMonthHandler($event, endDatePicker)">
+          </mat-datepicker>
+          <mat-error *ngIf="registrationForm.controls['endDate'].errors?.match">Start Date and End Date cannot be same</mat-error>
+          <mat-error *ngIf="registrationForm.controls['endDate'].errors?.invalid">End Date cannot be less than today</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="formFields">
+          <mat-label>Current Location</mat-label>
+          <mat-select #location id="location" name="location" formControlName="location" required [(ngModel)]="registerUser.location">
+            <mat-option [value]="location" *ngFor="let location of locations">{{ location }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="formFields">
+          <mat-label>Campus Location</mat-label>
+          <mat-select #campusLocation id="campusLocation" name="campusLocation" formControlName="campusLocation" required [(ngModel)]="registerUser.campusLocation">
+            <mat-option [value]="campusLocation" *ngFor="let campusLocation of campusLocations">{{ campusLocation }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="formFields">
+          <mat-label>Gender Preference</mat-label>
+          <mat-select #preference id="preference" name="preference" formControlName="preference" [(ngModel)]="registerUser.preference">
+            <mat-option [value]="preference" *ngFor="let preference of preferences">{{ preference }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p class="alert alert-warning" *ngIf="dataservice.isAdmin && registrationForm.controls['startDate'].errors?.invalidDiff">
+        You cannot apply to be a mentor. The difference between current date and start date is less than 8 months
+      </p>
+      <p>
+        <button mat-button class="register" [disabled]="!registrationForm.valid" (click)="openDialog();">Register</button>
+      </p>
+    </form>
+  </div>
+</div>

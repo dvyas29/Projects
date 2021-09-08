@@ -1,0 +1,14 @@
+/**
+* Author: Gurleen Saluja (gr997570@dal.ca)
+*/
+.parentDiv{
+  padding: 10px 5px;
+}
+
+.mat-raised-button{
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-left: 15px;
+  margin-top: -50px;
+  color: #00008B;
+}

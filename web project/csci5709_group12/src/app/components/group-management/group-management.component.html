@@ -1,0 +1,6 @@
+<!-- Mohammed Hamza Jasnak mh342039@dal.ca -->
+<mat-tab-group mat-align-tabs="start" style ="margin: 0;" [(selectedIndex)]="selectedIndex">
+    <mat-tab label="Group Formation"><app-group-formation *ngIf="selectedIndex == 0"></app-group-formation></mat-tab>
+    <mat-tab label="Assign Mentor"><app-assign-mentor *ngIf="selectedIndex == 1"></app-assign-mentor> </mat-tab>
+
+  </mat-tab-group>

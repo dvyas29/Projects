@@ -1,0 +1,13 @@
+.card-main{
+  display: flex;
+  flex-flow: row wrap;
+  background-color: transparent;
+}
+
+.mentor-card{
+margin: 15px;
+height: 30vh;
+width: 20vw;
+cursor: pointer;
+}
+

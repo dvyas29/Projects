@@ -1,0 +1,46 @@
+/* 
+ * Author: Mansi Singh 
+ * Email id: mn518448@dal.ca
+*/
+
+.announcementContainer{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.announcementCard {
+    width: 70vw;
+    margin: 0px 10px 15px 53px;
+    cursor: pointer;
+  }
+
+  mat-card-title{
+    color:green;
+    font-size:40px
+    }
+
+    .addAnnouncementBtn{
+      margin-bottom: 0px;
+      margin-right: 70px;
+      float:right;
+    }
+
+    .addAnnouncementBtnDiv{
+    width:100%;
+     height:70px; 
+     margin:10px 15px 0px 10px;
+    }
+
+    .announcementCardDiv{
+      margin:0px;
+      padding: 0px 20px 10px 20px;
+    }
+
+    .announcementHeadingSpacer {
+      flex: 1 1 auto;
+    }
+
+    .limitAnnouncementDescriptionHeight {
+      height: 40px;
+      overflow: hidden;
+  }

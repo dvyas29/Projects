@@ -1,0 +1,35 @@
+/**
+* Author: Gurleen Saluja (gr997570@dal.ca)
+*/
+table{
+  width: 100%;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+.modalLink{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.tableHeader{
+  font-weight: bold !important;
+}
+
+h3, h4{
+    margin: 0 0 0px !important;
+}
+
+.heading{
+  color: #00008B;
+  padding: 10px 10px;
+  background-color: #DCDCDC;
+}
+
+.mat-divider{
+  color: #00008B !important;
+}
+
+a{
+  color: #00008B !important;
+}

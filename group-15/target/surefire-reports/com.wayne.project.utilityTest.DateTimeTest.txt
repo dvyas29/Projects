@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.wayne.project.utilityTest.DateTimeTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s - in com.wayne.project.utilityTest.DateTimeTest

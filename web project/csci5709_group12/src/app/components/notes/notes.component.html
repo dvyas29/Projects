@@ -1,0 +1,27 @@
+<!-- Mohammed Hamza Jasnak mh342039@dal.ca -->
+<div class="note-container">
+    <!-- Create new note card -->
+    <mat-card class="note-card" (click)="openCard(-1)">
+        <section class="note-create-card">
+            <mat-icon class="card-create-icon" aria-hidden="false" aria-label="delete icon">add</mat-icon>
+        </section>
+        <section class="note-create-card-content">
+            Create Note
+        </section>
+    </mat-card>
+
+    <mat-card matRipple class="note-card" *ngFor="let note of Notes; let i = index;" (click)="openCard(i)">
+        <section class="note-card-title" id="">
+            <label class="title-label" [matTooltip]="note?.title" matTooltipPosition="above">
+                {{note?.title}}
+
+            </label>
+            <mat-icon class="card-delete-icon" aria-hidden="false" aria-label="delete icon"
+                (click)="dataservice.deleteNote(note._id); $event.stopPropagation();">delete</mat-icon>
+        </section>
+        <section class="note-card-content">
+            {{note?.content}}
+        </section>
+    </mat-card>
+
+</div>

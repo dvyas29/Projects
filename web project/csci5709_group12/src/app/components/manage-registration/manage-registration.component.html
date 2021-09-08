@@ -1,0 +1,19 @@
+<!-- Author: Gurleen Saluja (gr997570@dal.ca) -->
+<div class="parentDiv">
+  <form [formGroup]="enableRegistrationForm" class="enableRegistration">
+    <mat-form-field appearance="fill" style="top: 7px !important; bottom: -5px !important;">
+      <mat-label>Enter a date range (m/dd/yyyy)</mat-label>
+      <mat-date-range-input [rangePicker]="picker" required>
+        <input matStartDate placeholder="Start date" formControlName="startDate" #startDate [(ngModel)]="manageRegistration.startDate">
+        <input matEndDate placeholder="End date" formControlName="endDate" #endDate [(ngModel)]="manageRegistration.endDate">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+      <mat-error *ngIf="enableRegistrationForm.controls['startDate'].errors?.invalid">Start date cannot be less than today</mat-error>
+      <mat-error *ngIf="enableRegistrationForm.controls['endDate'].errors?.invalid">End date cannot be less than today</mat-error>
+      <mat-error *ngIf="enableRegistrationForm.controls['endDate'].errors?.minDiff">Start date and end date cannot be same</mat-error>
+    </mat-form-field>
+    <button mat-raised-button [disabled]="(!enableRegistrationForm.valid)" (click)="submitForm()">Submit</button>
+    <button mat-raised-button *ngIf="!hideWindowBtn" (click)="setForm(true)">Close Registration Window</button>
+  </form>
+</div>

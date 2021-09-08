@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.wayne.project.contactInformationTest.ContactInformationTest" time="0.057" tests="2" errors="0" skipped="0" failures="0">
+  <properties/>
+  <testcase name="getContactInformationTest" classname="com.wayne.project.contactInformationTest.ContactInformationTest" time="0.053"/>
+  <testcase name="sendQueryInformationTest" classname="com.wayne.project.contactInformationTest.ContactInformationTest" time="0.002"/>
+</testsuite>

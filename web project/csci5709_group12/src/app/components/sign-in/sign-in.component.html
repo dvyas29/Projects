@@ -1,0 +1,69 @@
+<!--
+* Author: Misbah Pathan 
+* Email id: ms358232@dal.ca
+-->
+<div style="width: 100%; height: 100%; background-color: #DCDCDC; padding-top: 50px;">
+    <mat-card style="width: 50%; margin: auto;     padding-top: 3%;    max-height: 98%;">
+
+        <h1 style="    text-align: center;
+color: #002b5c;
+font-weight: 900;
+font-size: xxx-large;
+line-height: 50px;">Dal Student HandBook</h1>
+
+        <br>
+
+        <h5 style="text-align: center;">Don't miss your opportunity to connect with your fellow mates and learn new
+            things.</h5>
+
+        <form [formGroup]="SigninForm">
+
+            <div class="example-container">
+                <div class="extra">
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput [(ngModel)]="Email" formControlName="Email" placeholder="Email" type="email">
+                        <mat-error *ngIf="SigninForm?.controls['Email']?.errors?.required">Email is required</mat-error>
+                        <mat-error *ngIf="SigninForm?.controls['Email']?.errors?.email">Please Enter valid Email
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="extra">
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput [(ngModel)]="Password" formControlName="Password" type="Password"
+                            placeholder="Password">
+                        <mat-error *ngIf="SigninForm?.controls['Password']?.errors?.required">Password is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="extra">
+                    <button mat-raised-button type="submit" class="button" [disabled]="!SigninForm?.valid" color="primary" style=" background-color: #002b5c;
+                text-align: center;
+                color: white;" (click)="signin()">Sign in</button>
+                </div>
+            </div>
+        </form>
+
+        <div  class="extra">
+            <button mat-button type="submit" (click)="gotoForgotPassword()">
+                <mat-label>Forgot Password? &nbsp;</mat-label>
+            </button>
+        </div>
+        <div class="division" style="margin: 4% 12%;
+        text-align: center;">
+            <mat-label>New to Dal Student Handbook? &nbsp;</mat-label>
+            <span class="link" style="color: blue; text-decoration: underline; cursor: pointer;" mat-label
+                (click)="gotoRegister()">
+                <button mat-button (click)="gotoRegister()" style="
+            background-color: white;
+            color: #002b5c;
+            text-align: center;">Join Now</button>
+            </span>
+        </div>
+
+    </mat-card>
+
+</div>

@@ -1,0 +1,28 @@
+/* 
+ * Author: Mansi Singh 
+ * Email id: mn518448@dal.ca
+*/
+
+.example-container .mat-form-field + .mat-form-field {
+    margin-left: 50px;
+  }
+  
+.mentorFeedbackContainer{
+    width: 90%;
+    margin: auto;
+    border: 1px;
+}
+
+.form-field{
+  width: 100%;
+}
+
+.mat-form-field {
+  padding:1px;
+  width: 100% !important;
+}
+
+.mentorFeedbackHeader{
+  text-align: center;
+  color: brown;
+}

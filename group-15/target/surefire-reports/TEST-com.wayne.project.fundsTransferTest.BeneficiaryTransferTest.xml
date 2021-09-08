@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.wayne.project.fundsTransferTest.BeneficiaryTransferTest" time="0.067" tests="5" errors="0" skipped="0" failures="0">
+  <properties/>
+  <testcase name="confirmTransactionTest" classname="com.wayne.project.fundsTransferTest.BeneficiaryTransferTest" time="0.059"/>
+  <testcase name="checkAvailableBalanceTest" classname="com.wayne.project.fundsTransferTest.BeneficiaryTransferTest" time="0.001"/>
+  <testcase name="saveTransactionTest" classname="com.wayne.project.fundsTransferTest.BeneficiaryTransferTest" time="0.001"/>
+  <testcase name="performTransactionTest" classname="com.wayne.project.fundsTransferTest.BeneficiaryTransferTest" time="0.001"/>
+  <testcase name="performTransactionToOtherBankTest" classname="com.wayne.project.fundsTransferTest.BeneficiaryTransferTest" time="0.002"/>
+</testsuite>

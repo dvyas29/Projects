@@ -1,0 +1,23 @@
+/**
+* Author: Gurleen Saluja (gr997570@dal.ca)
+*/
+mat-form-field{
+  width: 100% !important;
+}
+
+.mat-dialog-content{
+  overflow-x: hidden;
+}
+
+.mat-dialog-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.mat-dialog-content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0);
+}
+
+.mat-dialog-content::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 4px rgba(0,0,0);
+}

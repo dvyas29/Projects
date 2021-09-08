@@ -1,0 +1,28 @@
+/**
+* Author: Gurleen Saluja (gr997570@dal.ca)
+*/
+.registrationForm{
+  padding: 10px 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.mat-radio-button{
+  padding: 10px 20px;
+}
+
+.formFields{
+  width: 400px;
+}
+
+.register{
+  background-color: #DCDCDC;
+  color: #00008B;
+  padding: 10px 25px;
+  width: 400px;
+  cursor: pointer;
+}

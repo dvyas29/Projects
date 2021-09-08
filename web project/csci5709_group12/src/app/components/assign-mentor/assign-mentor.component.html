@@ -1,0 +1,60 @@
+<!-- Mohammed Hamza Jasnak mh342039@dal.ca -->
+<!-- The below code was created by adapting the code in [Angular Material](https://material.angular.io/components/table/examples) as shown below:  -->
+<section>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 group-table">
+
+    <ng-container matColumnDef="groupName">
+      <th mat-header-cell *matHeaderCellDef> Group Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.groupName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="faculty">
+      <th mat-header-cell *matHeaderCellDef> Stream </th>
+      <td mat-cell *matCellDef="let element"> {{element.faculty}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef> Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="mentor">
+      <th mat-header-cell *matHeaderCellDef style="width: 20%;"> Mentor </th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="!element.edit">{{getMentorName(element.mentor)}}</span>
+        <!-- in row edit control -->
+        <span *ngIf="element.edit">
+          <mat-form-field id="select-group-name" appearance="fill" style="height: 35px;">
+            <mat-select [(ngModel)]="element.oldMentorValue">
+              <mat-option value="un-assigned">
+                un-assigned
+              </mat-option>
+              <mat-option *ngFor="let mentor of mentorList" [value]="mentor._id">
+                {{mentor.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </span>
+
+      </td>
+    </ng-container>
+
+    <!-- Action icons -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef style="width: 15%;"></th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon *ngIf="!element.edit" (click)="element.edit = true">edit</mat-icon>
+        <mat-icon *ngIf="element.edit" (click)="element.edit = false; cancel(element.name)">close</mat-icon>
+        <mat-icon *ngIf="element.edit" (click)="element.edit = false; save(element)">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>
+<!-- Paginator -->
+<section>
+  <mat-paginator [pageSize]="4" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</section>

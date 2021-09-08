@@ -1,0 +1,48 @@
+<!-- Author: Mansi Singh 
+      Email id: mn518448@dal.ca -->
+      
+<h2 class="applicationFeedbackHeader">Welcome to this page! You can provide rating and feedback for the application here..</h2>
+<div class="applicationFeedbackContainer">
+<form [formGroup]="websiteFeedbackForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field class="form-field">
+    <mat-label>How often do you use this application?</mat-label>
+    <mat-select name="UsageFrequency" formControlName="UsageFrequency" [(ngModel)]="applicationFeedbackForm.usageFrequency" placeholder="Select your usage frequency">
+      <mat-option *ngFor="let usageFreq of usageFreqs" [value]="usageFreq.viewValue">
+        {{usageFreq.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="websiteFeedbackForm?.controls['UsageFrequency']?.errors?.required">Please choose a mentor</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>What did you like the most in the application?</mat-label>
+    <mat-select name="LikedFeature" formControlName="LikedFeature" [(ngModel)]="applicationFeedbackForm.mostLikedFeature" placeholder="LikedFeature" multiple>
+      <mat-option *ngFor="let likedFeature of likedFeatures" [value]="likedFeature.viewValue">
+        {{likedFeature.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="websiteFeedbackForm?.controls['LikedFeature']?.errors?.required">Please choose what did you like the most</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>How much rating would you provide to this application</mat-label>
+    <mat-select name="Rating" formControlName="Rating" [(ngModel)]="applicationFeedbackForm.rating" placeholder="Rating">
+      <mat-option *ngFor="let rating of ratings" [value]="rating.viewValue">
+        {{rating.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="websiteFeedbackForm?.controls['Rating']?.errors?.required">Please choose a rating</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+      <mat-label>How would you describe your experience of using this application?</mat-label>
+      <textarea matInput #feedback formControlName="Feedback" placeholder="Feedback" [(ngModel)]="applicationFeedbackForm.feedbackDescription" type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" cdkAutosizeMaxRows="8"></textarea>
+      <mat-hint align="end">{{feedback.value.length}} characters</mat-hint>
+      <mat-error *ngIf="websiteFeedbackForm?.controls['Feedback']?.errors?.required || websiteFeedbackForm?.controls['Feedback']?.errors?.cannotContainSpace">Feedback is required</mat-error>
+  </mat-form-field>
+<br>
+  <button mat-raised-button type="submit" [disabled]="!websiteFeedbackForm?.valid" color="primary">Submit</button>
+</form>
+</div>
+

@@ -1,0 +1,57 @@
+<!--
+* Author: Misbah Pathan 
+* Email id: ms358232@dal.ca
+-->
+<div style="height: 70px;">
+    <button mat-raised-button color="warn" style="margin: 15px 30px; float: right;" [routerLink]="'/main/resetpassword'" >Reset Password</button>
+    <button mat-raised-button color="primary" style="margin: 15px 30px; float: right;" (click)="isEdit = !isEdit">{{!isEdit?'Edit Profile': 'Cancel'}}</button>
+</div>
+<form name="form" #profileFrom="ngForm" (submit)="save(profileFrom)" style="height: 80%;">
+    <table style="width: 50%; margin: auto;">
+        <tr style="height: 70px;">
+            <td style="width: 25%;">
+                <mat-label>First Name</mat-label>
+            </td>
+            <td style="width: 75%;" [ngStyle]="{'padding': isEdit ? '0px' : '24px 13px'}">
+                <mat-label *ngIf="!isEdit">{{profile?.firstName}}</mat-label>
+
+                <mat-form-field appearance="fill" *ngIf="isEdit">
+                    <input matInput name="FirstName" class="" #FirstName="ngModel" [(ngModel)]="profile.firstName"
+                        required [disabled]="!isEdit">
+                    <mat-error *ngIf="FirstName.invalid">First Name is required</mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr style="height: 70px;">
+            <td style="width: 25%;">
+                <mat-label>Last Name</mat-label>
+            </td>
+            <td style="width: 75%;" [ngStyle]="{'padding': isEdit ? '0px' : '24px 13px'}">
+                <mat-label *ngIf="!isEdit">{{profile?.lastName}}</mat-label>
+                <mat-form-field appearance="fill" *ngIf="isEdit">
+                    <input matInput name="LastName" class="" #LastName="ngModel" [(ngModel)]="profile.lastName" required
+                        [disabled]="!isEdit">
+                    <mat-error *ngIf="LastName.invalid">Last Name is required</mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr style="height: 70px;">
+            <td style="width: 25%;">
+                <mat-label>Email</mat-label>
+            </td>
+            <td style="width: 75%;" [ngStyle]="{'padding': isEdit ? '0px' : '24px 13px'}">
+                <mat-label *ngIf="!isEdit">{{profile?.email}}</mat-label>
+
+                <mat-form-field appearance="fill" *ngIf="isEdit">
+                    <input matInput name="Email" class="" #Email="ngModel" disabled [(ngModel)]="profile.email"
+                        required>
+                    <mat-error *ngIf="Email.invalid">Email is required</mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+<div style="margin-right: auto;margin-left: auto;width: 42%;">
+    <button mat-raised-button color="primary" type="submit" style="margin: 15px 0px;" *ngIf="isEdit">Save</button>
+</div>
+
+</form>

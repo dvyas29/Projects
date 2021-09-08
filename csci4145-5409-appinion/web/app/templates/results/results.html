@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Results{% endblock %}
+
+{% block content %}
+<div>
+  <h2>Sentiment Analysis Results</h2>
+  {% if av %}
+      {% if standing == 'Bad' %}
+          <h1 style="font-size: 100px; color:red; width:100%; text-align:center">{{standing}}</h1>
+      {% else %}
+          <h1 style="font-size: 100px; color:green; width:100%; text-align:center">{{standing}}</h1>
+      {% endif %}
+      <table style="width:100%">
+        <tr>
+          <th>Username</th>
+          <th>Tweet</th>
+          <th>Polarity</th>
+        </tr>
+        {% for result in sentiment_results %}
+          <tr>
+            <td>{{result.username}}</td>
+            <td>{{result.tweet}}</td>
+            <td>{{result.polarity}}</td>
+          </tr>
+        {% endfor %}
+      </ul>
+  {% else %}
+    <h1 style="font-size: 100px; width:100%; text-align:center">Not Available Yet, Check back in a few minutes...</h1>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<section class="message-section" *ngIf="data.type === 'W'">
+    <img class="message-icon-image" src="../../../assets/images/warning_icon.png" alt="warning"/>
+    <h1 mat-dialog-title>{{data.title}}</h1>
+    <div mat-dialog-content>{{data.message}}</div>
+    <div class="message-button-div" mat-dialog-actions>
+        <button class="message-button" mat-raised-button  mat-dialog-close (click)="close('N')">Close</button>
+        <button class="message-button message-warn-button" mat-raised-button mat-dialog-close (click)="close('Y')">{{data.buttonText}}</button>
+    </div>
+</section>
+
+<section class="message-section" *ngIf="data.type === 'C'">
+    <img class="message-icon-image" src="../../../assets/images/confirm_icon.png" alt="warning"/>
+    <h1 mat-dialog-title>{{data.title}}</h1>
+    <div mat-dialog-content>{{data.message}}</div>
+</section>
+
+<section class="message-section" *ngIf="data.type === 'E'">
+    <img class="message-icon-image" src="../../../assets/images/error_icon.png" alt="warning"/>
+    <h1 mat-dialog-title>{{data.title}}</h1>
+    <div mat-dialog-content>{{data.message}}</div>
+</section>

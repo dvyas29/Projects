@@ -1,0 +1,47 @@
+<section class="row" style="margin: 0px;">
+    <section class="col-md-4">
+        <button mat-button [routerLink]="['/main/notes']"><mat-icon>chevron_left</mat-icon> Back to Notes</button>
+    </section>
+    <section class="col-md-8" style="text-align: end;" > 
+        <button mat-button (click)="saveNote()"><mat-icon>check</mat-icon> Save </button> <span *ngIf="isCreate">|</span>
+        <button mat-button  (click)="deleteNote()" *ngIf="isCreate"><mat-icon>delete_outline</mat-icon> Delete</button>
+    </section>
+</section>
+
+<section>
+    <mat-card class="card">
+        <mat-form-field class="form-field">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Title" [(ngModel)]="note.title"/>
+        </mat-form-field>
+        <!-- The below code of chips was created by adapting the code in [Angular Material](https://material.angular.io/components/chips/examples) -->
+        <mat-form-field class="form-field tag-chips">
+            <mat-label>Tags</mat-label>
+            <mat-chip-list #tagList aria-label="Tagging">
+              <mat-chip
+                *ngFor="let tag of note?.tags"
+                selectable="true"
+                removable="true"
+                (removed)="removeTag(tag)">
+                {{tag}}
+                <mat-icon matChipRemove >cancel</mat-icon>
+              </mat-chip>
+              <input
+                placeholder="New tag..."
+                #tagInput
+                [formControl]="tagFormControl"
+                [matChipInputFor]="tagList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="addTag($event)">
+            </mat-chip-list>
+          </mat-form-field>
+    
+        <mat-hint>{{content.value.length}} Characters</mat-hint>
+        <mat-form-field class="form-field content-form-field">
+          <mat-label>Content</mat-label>
+          <textarea class="content-textarea" matInput #content placeholder="Note Content" [(ngModel)]="note.content"> </textarea>
+        </mat-form-field>
+
+      
+    </mat-card>
+</section>

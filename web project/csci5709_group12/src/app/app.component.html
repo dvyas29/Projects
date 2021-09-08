@@ -1,0 +1,4 @@
+<mat-spinner *ngIf="utilityservice?.isLoader" style="z-index: 999;width: 100px;height: 100px;position: fixed;top: 35%;right: 50%;"></mat-spinner>
+<div *ngIf="utilityservice?.isLoader" style="width: 100%; height: 100%; background-color: darkgrey; opacity: 0.5; position: fixed; top:0; z-index: 999;"></div>
+
+<router-outlet></router-outlet>
